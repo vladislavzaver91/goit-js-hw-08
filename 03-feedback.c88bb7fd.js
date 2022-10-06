@@ -1,0 +1,2 @@
+!function(){var e={form:document.querySelector(".feedback-form"),textarea:document.querySelector("[name=message]")},t="feedback-form-state";e.form.addEventListener("submit",(function(e){e.preventDefault(),console.log("Poletela forma =>"),e.currentTarget.reset()})),e.textarea.addEventListener("input",(function(e){var r=e.currentTarget.value;localStorage.setItem(t,r),console.log(r)}))}();
+//# sourceMappingURL=03-feedback.c88bb7fd.js.map
