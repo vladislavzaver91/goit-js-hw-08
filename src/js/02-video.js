@@ -25,19 +25,3 @@ if (savingData) {
         };
     });
 };
-
-// function resumesPlayback() {
-//     const savingData = localStorage.getItem(LOCAL_STORAGE_KEY);
-//     if (savingData) {
-//     player.setCurrentTime(savingData)
-//     .then(function() {})
-//     .catch(function(error) {
-//         switch (error.name) {
-//             case 'RangeError':
-//                 break;
-//             default:
-//                 break;
-//         };
-//     });
-// };
-// };
