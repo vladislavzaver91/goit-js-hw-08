@@ -41,10 +41,12 @@ function populateAllForm() {
     }
     try {
         const parseData = JSON.parse(savedData);
-        Object.entries(parseData).forEach(([name, value]) => {
-            refs.form.elements[name].value = value;
-        })
-    } catch (error) {
+            Object.entries(parseData).forEach(([name, value]) => {
+                refs.form.elements[name].value = value;
+                console.log(value);
+            });
+        }
+    catch (error) {
         console.error(error.message)
     }
 };
