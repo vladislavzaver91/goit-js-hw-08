@@ -3,12 +3,11 @@ import { Notify } from 'notiflix/build/notiflix-notify-aio';
 
 const refs = {
     form: document.querySelector('.feedback-form'),
+    email: document.querySelector('[name=email]'),
     textarea: document.querySelector('[name=message]'),
 }
 
 const LOCAL_STORAGE_KEY = 'feedback-form-state';
-
-const formData = {};
 
 const notifyOpt = {
     timeout: 2000,
@@ -22,9 +21,10 @@ refs.form.addEventListener('input', throttle(onFormInput, 500));
 
 populateAllForm();
 
-function onFormInput (ev) {
-    const { name, value } = ev.target;
-    formData[name] = value;
+function onFormInput () {
+    const email = refs.form.elements.email.value;
+    const message = refs.form.elements.message.value;
+    const formData = { email, message, };
 
     try {
         const stringifyData = JSON.stringify(formData);
@@ -36,16 +36,16 @@ function onFormInput (ev) {
 
 function populateAllForm() {
     const savedData = localStorage.getItem(LOCAL_STORAGE_KEY);
+
     if (!savedData) {
         return;
     }
     try {
         const parseData = JSON.parse(savedData);
-            Object.entries(parseData).forEach(([name, value]) => {
-                refs.form.elements[name].value = value;
-                console.log(value);
-            });
-        }
+        Object.entries(parseData).forEach(([name, value]) => {
+            refs.form.elements[name].value = value;
+        });
+    }
     catch (error) {
         console.error(error.message)
     }
